@@ -3,8 +3,8 @@ package by.netcracker.chef.dao.impl;
 import by.netcracker.chef.dao.exception.DaoException;
 import by.netcracker.chef.entity.Salad;
 import by.netcracker.chef.entity.Vegetable;
-import by.netcracker.chef.pool.ConnectionPool;
 import by.netcracker.chef.pool.exception.ConnectionPoolException;
+import by.netcracker.chef.pool.ConnectionPool;
 import com.mysql.jdbc.Statement;
 
 import java.sql.Connection;

@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>web-view</artifactId>
+    <packaging>war</packaging>
 
-    <name>service</name>
+    <name>web-view</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -20,8 +20,20 @@
     <dependencies>
 
         <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>chef</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>service</artifactId>
             <version>1.0</version>
         </dependency>
 
@@ -37,8 +49,9 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <artifactId>maven-war-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
+
 </project>

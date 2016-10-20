@@ -1,13 +1,18 @@
 package by.netcracker.chef.dao;
 
-import by.netcracker.chef.dao.impl.MenuDao;
 import by.netcracker.chef.dao.impl.SaladDao;
 import by.netcracker.chef.dao.impl.VegetableDao;
+import by.netcracker.chef.dao.impl.MenuDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DaoFactory {
+
+    private static Logger logger = LogManager.getLogger(DaoFactory.class);
+
     private static volatile DaoFactory instance = null;
 
     private Map<DaoName, IDao> daos = null;
@@ -34,6 +39,8 @@ public class DaoFactory {
     }
 
     public IDao getDao(DaoName daoName) {
+        logger.trace("REQUEST FOR " + daoName + " DAO");
+
         return daos.get(daoName);
     }
 }

@@ -7,10 +7,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>dao</artifactId>
+  <artifactId>logger</artifactId>
   <packaging>jar</packaging>
 
-  <name>dao</name>
+  <name>logger</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -20,20 +20,13 @@
   <dependencies>
 
       <dependency>
-        <groupId>chef</groupId>
-        <artifactId>entity</artifactId>
-        <version>1.0</version>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
       </dependency>
 
       <dependency>
-          <groupId>chef</groupId>
-          <artifactId>logger</artifactId>
-          <version>1.0</version>
-      </dependency>
-
-      <dependency>
-          <groupId>mysql</groupId>
-          <artifactId>mysql-connector-java</artifactId>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
       </dependency>
 
   </dependencies>
@@ -46,5 +39,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

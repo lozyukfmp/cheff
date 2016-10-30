@@ -10,7 +10,7 @@
     <title>Menu page</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <style>
         .btn-link {
             color: black;
@@ -27,31 +27,11 @@
 <div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <h3>${salad.name}</h3>
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>Калории:</td>
-                        <td>${salad.calories}</td>
-                    </tr>
-                    <tr>
-                        <td>Жиры:</td>
-                        <td>${salad.fats}</td>
-                    </tr>
-                    <tr>
-                        <td>Белки:</td>
-                        <td>${salad.proteins}</td>
-                    </tr>
-                    <tr>
-                        <td>Углеводы:</td>
-                        <td>${salad.carbohydrates}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <label for="ingredients">Ингридиенты:</label>
+            <h3>${menu.name}</h3>
+            <label for="ingredients">Салаты:</label>
             <ul class="list-group" id="ingredients">
-                <c:forEach items="${salad.ingredients}" var="vegetable">
-                    <li class="list-group-item">${vegetable.name}</li>
+                <c:forEach items="${menu.saladList}" var="salad">
+                    <li class="list-group-item">${salad.name}</li>
                 </c:forEach>
             </ul>
         </div>
@@ -61,6 +41,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
 </body>
 </html>

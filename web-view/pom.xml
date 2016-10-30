@@ -43,6 +43,12 @@
             <version>1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>chef</groupId>
+            <artifactId>configuration</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

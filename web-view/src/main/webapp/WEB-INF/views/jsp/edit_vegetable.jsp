@@ -10,7 +10,7 @@
     <title>Menu page</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <style>
         .btn-link {
             color: black;
@@ -27,33 +27,34 @@
 <div class="container" style="margin-top: 100px;">
     <div class="col-md-4 col-md-offset-4">
         <form action="/Controller" method="post">
-            <input type="hidden" name="command" value="create-vegetable"/>
+            <input type="hidden" name="command" value="edit-vegetable"/>
+            <input type="hidden" name="vegetable-id" value="${vegetable.id}"/>
             <div class="form-group">
                 <label for="vegetable-name">Название:</label>
                 <input type="text" class="form-control" name="vegetable-name"
-                       value="${vegetable.name}" placeholder="Введите название овоща" id="vegetable-name">
+                       value="${vegetable.name}" placeholder="Введите название овоща" id="vegetable-name" required>
             </div>
             <div class="form-group">
                 <label for="vegetable-calories">Калории:</label>
                 <input type="number" step="0.01" class="form-control" name="vegetable-calories"
-                       value="${vegetable.calories}" placeholder="Введите кол-во калорий" id="vegetable-calories">
+                       value="${vegetable.calories}" placeholder="Введите кол-во калорий" id="vegetable-calories" required>
             </div>
             <div class="form-group">
                 <label for="vegetable-fats">Жиры:</label>
                 <input type="number" step="0.01" class="form-control" name="vegetable-fats"
-                       value="${vegetable.fats}" placeholder="Введите кол-во жиров" id="vegetable-fats">
+                       value="${vegetable.fats}" placeholder="Введите кол-во жиров" id="vegetable-fats" required>
             </div>
             <div class="form-group">
                 <label for="vegetable-proteins">Белки:</label>
                 <input type="number" step="0.01" class="form-control" name="vegetable-proteins"
-                       value="${vegetable.proteins}" placeholder="Введите кол-во белков" id="vegetable-proteins">
+                       value="${vegetable.proteins}" placeholder="Введите кол-во белков" id="vegetable-proteins" required>
             </div>
             <div class="form-group">
                 <label for="vegetable-carbohydrates">Углеводы:</label>
                 <input type="number" step="0.01" class="form-control" name="vegetable-carbohydrates"
-                       value="${vegetable.carbohydrates}" placeholder="Введите кол-во углеводов" id="vegetable-carbohydrates">
+                       value="${vegetable.carbohydrates}" placeholder="Введите кол-во углеводов" id="vegetable-carbohydrates" required>
             </div>
-            <button type="submit" class="btn btn-success">Добавить овощь</button>
+            <button type="submit" class="btn btn-success">Изменить овощь</button>
         </form>
     </div>
 </div>
@@ -61,6 +62,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
 </body>
 </html>

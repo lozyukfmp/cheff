@@ -8,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Edit menu page</title>
+    <title>Menu page</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
     <style>
         .btn-link {
             color: black;
@@ -29,26 +29,26 @@
     <div class="container" style="margin-top: 100px;">
         <div class="col-md-4 col-md-offset-2">
             <form action="/Controller" method="post">
-                <input type="hidden" name="command" value="edit-menu"/>
-                <input type="hidden" name="menu-id" value="${menu.id}"/>
+                <input type="hidden" name="command" value="edit-salad"/>
+                <input type="hidden" name="salad-id" value="${salad.id}"/>
                 <div class="form-group">
-                    <label for="menu-name">Название:</label>
-                    <input type="text" class="form-control" name="menu-name"
-                           value="${menu.name}" placeholder="Введите название салата" id="menu-name" required>
+                    <label for="salad-name">Название:</label>
+                    <input type="text" class="form-control" name="salad-name"
+                           value="${salad.name}" placeholder="Введите название салата" id="salad-name" required>
                 </div>
-                <button type="submit" class="btn btn-success">Изменить меню</button>
+                <button type="submit" class="btn btn-success">Изменить салат</button>
             </form>
             <br/>
             <div class="form-group">
-                <label for="ingredients">Список добавленных салатов(${fn:length(menuSaladList)}):</label>
+                <label for="ingredients">Список добавленных ингредиентов(${fn:length(ingredientList)}):</label>
                 <ul class="list-group" id="ingredients">
-                    <c:forEach items="${menuSaladList}" var="salad">
+                    <c:forEach items="${ingredientList}" var="vegetable">
                         <form action="/Controller" method="post">
+                            <input type="hidden" name="vegetable-id" value="${vegetable.id}"/>
                             <input type="hidden" name="salad-id" value="${salad.id}"/>
-                            <input type="hidden" name="menu-id" value="${menu.id}"/>
-                            <input type="hidden" name="command" value="delete-salad-from-menu"/>
+                            <input type="hidden" name="command" value="delete-ingredient-from-salad"/>
                             <a type="submit" href="" onclick="this.parentNode.submit(); return false;" class="list-group-item">
-                                    ${salad.name}
+                                    ${vegetable.name}
                             </a>
                         </form>
                     </c:forEach>
@@ -57,15 +57,15 @@
         </div>
         <div class="col-md-4 col-md-offset-2">
             <div class="form-group">
-                <label for="vegetables">Список существующих салатов (${fn:length(saladList)}):</label>
+                <label for="vegetables">Список существующих овощей (${fn:length(vegetableList)}):</label>
                 <ul class="list-group" id="vegetables">
-                    <c:forEach items="${saladList}" var="salad">
+                    <c:forEach items="${vegetableList}" var="vegetable">
                         <form action="/Controller" method="post">
+                            <input type="hidden" name="vegetable-id" value="${vegetable.id}"/>
                             <input type="hidden" name="salad-id" value="${salad.id}"/>
-                            <input type="hidden" name="menu-id" value="${menu.id}"/>
-                            <input type="hidden" name="command" value="add-salad-to-menu"/>
+                            <input type="hidden" name="command" value="add-ingredient-to-salad"/>
                             <a type="submit" href="" onclick="this.parentNode.submit(); return false;" class="list-group-item">
-                                    ${salad.name}
+                                    ${vegetable.name}
                             </a>
                         </form>
                     </c:forEach>
@@ -78,6 +78,6 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
 </body>
 </html>

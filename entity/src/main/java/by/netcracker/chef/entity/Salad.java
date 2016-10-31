@@ -31,7 +31,7 @@ public class Salad {
         this.ingredients = ingredients;
     }
 
-    public double getCalories() {
+    /*public double getCalories() {
         return getIngredients().stream().mapToDouble(vegetable -> vegetable.getCalories()).sum();
     }
 
@@ -45,7 +45,7 @@ public class Salad {
 
     public double getCarbohydrates() {
         return getIngredients().stream().mapToDouble(vegetable -> vegetable.getCarbohydrates()).sum();
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {

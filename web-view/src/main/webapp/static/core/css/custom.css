@@ -1,0 +1,19 @@
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    background-color: transparent;
+    margin-bottom: 0px;
+    border: none;
+}
+
+a.list-group-item:focus,
+a.list-group-item:hover,
+button.list-group-item:focus,
+button.list-group-item:hover {
+    color: #555;
+    text-decoration: underline;
+    font-size: 16px;
+    margin-bottom: -2px;
+    background-color: transparent;
+}

@@ -1,55 +1,33 @@
 package by.netcracker.chef.entity;
 
-import java.util.List;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+@Data
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "menu")
 public class Menu {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menu_id")
+    private int menuId;
+
+    @Column(name = "menu_name")
     private String name;
-    private List<Salad> saladList;
 
-    public int getId() {
-        return id;
-    }
+    @ManyToMany
+    @JoinTable(name = "menu_m2m_salad",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "salad_id"))
+    private Collection<Salad> saladList = new ArrayList<>();
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Salad> getSaladList() {
-        return saladList;
-    }
-
-    public void setSaladList(List<Salad> saladList) {
-        this.saladList = saladList;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Menu menu = (Menu) o;
-
-        if (getId() != menu.getId()) return false;
-        if (getName() != null ? !getName().equals(menu.getName()) : menu.getName() != null) return false;
-        return getSaladList() != null ? getSaladList().equals(menu.getSaladList()) : menu.getSaladList() == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getSaladList() != null ? getSaladList().hashCode() : 0);
-        return result;
-    }
 }
-

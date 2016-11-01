@@ -1,91 +1,36 @@
 package by.netcracker.chef.entity;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@NoArgsConstructor
+@Builder
+@Entity
+@Table(name = "vegetable")
 public class Vegetable {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "vegetable_id")
+    private Integer vegetableId;
+
+    @Column(name = "vegetable_name")
     private String name;
-    private double calories;
-    private double fats;
-    private double proteins;
-    private double carbohydrates;
 
-    public int getId() {
-        return id;
-    }
+    @Column(name = "calories")
+    private Double calories;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column(name = "fats")
+    private Double fats;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "proteins")
+    private Double proteins;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @Column(name = "carbohydrates")
+    private Double carbohydrates;
 
-    public double getCalories() {
-        return calories;
-    }
-
-    public void setCalories(double calories) {
-        this.calories = calories;
-    }
-
-    public double getFats() {
-        return fats;
-    }
-
-    public void setFats(double fats) {
-        this.fats = fats;
-    }
-
-    public double getProteins() {
-        return proteins;
-    }
-
-    public void setProteins(double proteins) {
-        this.proteins = proteins;
-    }
-
-    public double getCarbohydrates() {
-        return carbohydrates;
-    }
-
-    public void setCarbohydrates(double carbohydrates) {
-        this.carbohydrates = carbohydrates;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Vegetable vegetable = (Vegetable) o;
-
-        if (getId() != vegetable.getId()) return false;
-        if (Double.compare(vegetable.getCalories(), getCalories()) != 0) return false;
-        if (Double.compare(vegetable.getFats(), getFats()) != 0) return false;
-        if (Double.compare(vegetable.getProteins(), getProteins()) != 0) return false;
-        if (Double.compare(vegetable.getCarbohydrates(), getCarbohydrates()) != 0) return false;
-        return getName() != null ? getName().equals(vegetable.getName()) : vegetable.getName() == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = getId();
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        temp = Double.doubleToLongBits(getCalories());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(getFats());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(getProteins());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(getCarbohydrates());
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
 }

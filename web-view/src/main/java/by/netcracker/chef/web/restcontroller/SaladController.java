@@ -1,9 +1,6 @@
 package by.netcracker.chef.web.restcontroller;
 
 import by.netcracker.chef.entity.Salad;
-import by.netcracker.chef.service.IService;
-import by.netcracker.chef.service.ServiceFactory;
-import by.netcracker.chef.service.ServiceName;
 import by.netcracker.chef.service.exception.ServiceException;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

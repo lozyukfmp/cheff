@@ -27,7 +27,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <spring:url value="/static/js/config" var="applicationJs"/>
-    <spring:url value="/static/js/require.js" var="requireJs"/>
+    <spring:url value="/static/js/lib/require.js" var="requireJs"/>
     <script data-main="${applicationJs}" src="${requireJs}"></script>
 </head>
 <body>
@@ -54,7 +54,7 @@
                     <h4 class="modal-title">Modal Header</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+
                 </div>
                 <div class="modal-footer">
                     <button id="close-button" type="button" class="btn btn-default" data-dismiss="modal">Close</button>

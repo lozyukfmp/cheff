@@ -9,6 +9,27 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
         "vegetable": showVegetableDetails
     };
 
+    var emptyObjects = {
+        "menu": {
+            id: -1,
+            name: "",
+            saladList: []
+        },
+        "salad": {
+            id: -1,
+            name: "",
+            ingredients: []
+        },
+        "vegetable": {
+            id: -1,
+            name: "",
+            calories: undefined,
+            fats: undefined,
+            proteins: undefined,
+            carbohydrates: undefined
+        }
+    };
+
     function showItemList(itemType, itemList) {
         itemContainer.empty();
         detailsContainer.empty();
@@ -24,6 +45,8 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
 
             itemContainer.append(menuItemLink);
         });
+
+        addCreateButton(itemType, emptyObjects[itemType]);
     }
 
     function showVegetableDetails(vegetable) {
@@ -50,7 +73,7 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
                 .append($("<p></p>").text("Name : " + vegetable.name));
         });
 
-        addEditButtons();
+        addEditButtons("salad", salad);
     }
 
     function showMenuDetails(menu) {
@@ -65,7 +88,7 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
                 .append($("<p></p>").text("Name : " + salad.name));
         });
 
-        addEditButtons();
+        addEditButtons("menu", menu);
     }
 
     function addEditButtons(itemType, item) {
@@ -79,8 +102,26 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
             edit.showModal();
         });
 
+        $deleteButton.click(function () {
+            require("ajax").deleteItem(itemType, item);
+        });
+
         $buttonContainer.append($editButton, $deleteButton);
         detailsContainer.append($buttonContainer);
+    }
+
+    function addCreateButton(itemType, item) {
+        var $buttonContainer = $("<div class='btn-group'></div>");
+
+        var $createButton = $("<button class='btn btn-info'></button>").text("Create");
+
+        $createButton.click(function () {
+            edit.fillForm(itemType, item, "create");
+            edit.showModal();
+        });
+
+        $buttonContainer.append($createButton);
+        itemContainer.append($buttonContainer);
     }
 
     return {

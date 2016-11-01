@@ -1,11 +1,13 @@
 define(['jquery', 'details', 'edit'], function ($, details, edit) {
 
-    function getItemList(itemType) {
+    function getItemList(itemType, callback) {
+        callback = callback || function (response) {
+                details.showItemList(itemType, response);
+            };
+        
         $.ajax({
             url: itemType + "/all",
-            success: function (response) {
-                details.showItemList(itemType, response);
-            }
+            success: callback
         });
     }
 
@@ -16,12 +18,24 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
                 details.showDetails(itemType, response);
             }
         });
-
     }
 
-    function editItem(itemType, item) {
+    function deleteItem(itemType, item) {
         $.ajax({
-            url: itemType + "/edit",
+            url: itemType + "/delete/" + item.id,
+            type: "POST",
+            success: function () {
+                getItemList(itemType);
+            }
+        });
+    }
+
+    function editItem(itemType, item, mode) {
+        mode = mode || "edit";
+        console.log("POSTING ITEM: ");
+        console.log(item);
+        $.ajax({
+            url: itemType + "/" + mode,
             type: "POST",
             dataType: "json",
             data: JSON.stringify(item),
@@ -31,7 +45,8 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
             },
             success: function (response) {
                 edit.closeModal();
-                details.showDetails(itemType, response);
+                getItemList(itemType);
+                getItem(itemType, response);
             }
         });
     }
@@ -39,6 +54,7 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
     return {
         getItemList: getItemList,
         getItem: getItem,
-        editItem: editItem
+        editItem: editItem,
+        deleteItem: deleteItem
     };
 });

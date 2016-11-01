@@ -105,7 +105,7 @@ public class MenuDao extends DefaultDao{
     }
 
     @Override
-    public void updateMenu(Menu menu) throws DaoException {
+    public Menu updateMenu(Menu menu) throws DaoException {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -139,6 +139,8 @@ public class MenuDao extends DefaultDao{
                 throw new DaoException(e);
             }
         }
+
+        return menu;
     }
 
     @Override

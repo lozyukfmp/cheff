@@ -95,7 +95,7 @@ public class VegetableDao extends DefaultDao {
     }
 
     @Override
-    public void updateVegetable(Vegetable vegetable) throws DaoException{
+    public Vegetable updateVegetable(Vegetable vegetable) throws DaoException{
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -120,6 +120,8 @@ public class VegetableDao extends DefaultDao {
                 throw new DaoException(e);
             }
         }
+
+        return vegetable;
     }
 
     @Override

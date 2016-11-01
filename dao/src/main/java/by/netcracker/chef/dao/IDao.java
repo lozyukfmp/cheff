@@ -20,11 +20,11 @@ public interface IDao {
 
     Vegetable getVegetable(int vegetableId) throws DaoException;
 
-    void updateMenu(Menu menu) throws DaoException;
+    Menu updateMenu(Menu menu) throws DaoException;
 
-    void updateSalad(Salad salad) throws DaoException;
+    Salad updateSalad(Salad salad) throws DaoException;
 
-    void updateVegetable(Vegetable vegetable) throws DaoException;
+    Vegetable updateVegetable(Vegetable vegetable) throws DaoException;
 
     void deleteMenu(int menuId) throws DaoException;
 

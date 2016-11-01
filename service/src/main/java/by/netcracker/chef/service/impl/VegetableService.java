@@ -33,11 +33,11 @@ public class VegetableService extends DefaultService {
     }
 
     @Override
-    public void updateVegetable(Vegetable vegetable) throws ServiceException {
+    public Vegetable updateVegetable(Vegetable vegetable) throws ServiceException {
         try {
             IDao vegetableDao = DaoFactory.getInstance().getDao(DaoName.VEGETABLE);
 
-            vegetableDao.updateVegetable(vegetable);
+            return vegetableDao.updateVegetable(vegetable);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

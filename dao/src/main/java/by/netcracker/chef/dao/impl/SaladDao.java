@@ -118,7 +118,7 @@ public class SaladDao extends DefaultDao {
     }
 
     @Override
-    public void updateSalad(Salad salad) throws DaoException {
+    public Salad updateSalad(Salad salad) throws DaoException {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -152,6 +152,8 @@ public class SaladDao extends DefaultDao {
                 throw new DaoException(e);
             }
         }
+
+        return salad;
     }
 
     @Override

@@ -20,11 +20,11 @@ public interface IService {
 
     Vegetable getVegetable(int vegetableId) throws ServiceException;
 
-    void updateMenu(Menu menu) throws ServiceException;
+    Menu updateMenu(Menu menu) throws ServiceException;
 
-    void updateSalad(Salad salad) throws ServiceException;
+    Salad updateSalad(Salad salad) throws ServiceException;
 
-    void updateVegetable(Vegetable vegetable) throws ServiceException;
+    Vegetable updateVegetable(Vegetable vegetable) throws ServiceException;
 
     void deleteMenu(int menuId) throws ServiceException;
 

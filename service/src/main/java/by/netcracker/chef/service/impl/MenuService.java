@@ -34,11 +34,11 @@ public class MenuService extends DefaultService {
     }
 
     @Override
-    public void updateMenu(Menu menu) throws ServiceException {
+    public Menu updateMenu(Menu menu) throws ServiceException {
         try {
             IDao menuDao = DaoFactory.getInstance().getDao(DaoName.MENU);
 
-            menuDao.updateMenu(menu);
+            return menuDao.updateMenu(menu);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

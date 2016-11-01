@@ -40,18 +40,18 @@ public class DefaultDao implements IDao {
     }
 
     @Override
-    public void updateMenu(Menu menu) throws DaoException {
-
+    public Menu updateMenu(Menu menu) throws DaoException {
+        return menu;
     }
 
     @Override
-    public void updateSalad(Salad salad) throws DaoException {
-
+    public Salad updateSalad(Salad salad) throws DaoException {
+        return salad;
     }
 
     @Override
-    public void updateVegetable(Vegetable vegetable) throws DaoException {
-
+    public Vegetable updateVegetable(Vegetable vegetable) throws DaoException {
+        return vegetable;
     }
 
     @Override

@@ -34,11 +34,11 @@ public class SaladService extends DefaultService {
     }
 
     @Override
-    public void updateSalad(Salad salad) throws ServiceException {
+    public Salad updateSalad(Salad salad) throws ServiceException {
         try {
             IDao saladDao = DaoFactory.getInstance().getDao(DaoName.SALAD);
 
-            saladDao.updateSalad(salad);
+            return saladDao.updateSalad(salad);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

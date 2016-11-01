@@ -40,18 +40,18 @@ public class DefaultService implements IService {
     }
 
     @Override
-    public void updateMenu(Menu menu) throws ServiceException {
-
+    public Menu updateMenu(Menu menu) throws ServiceException {
+        return menu;
     }
 
     @Override
-    public void updateSalad(Salad salad) throws ServiceException {
-
+    public Salad updateSalad(Salad salad) throws ServiceException {
+        return salad;
     }
 
     @Override
-    public void updateVegetable(Vegetable vegetable) throws ServiceException {
-
+    public Vegetable updateVegetable(Vegetable vegetable) throws ServiceException {
+        return vegetable;
     }
 
     @Override

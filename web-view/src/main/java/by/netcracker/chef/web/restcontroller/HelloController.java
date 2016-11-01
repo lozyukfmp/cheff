@@ -65,10 +65,10 @@ public class HelloController {
     }
 
     @RequestMapping(value ="/vegetable/edit", method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void editVegetable(@RequestBody Vegetable vegetable)  throws ServiceException {
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Vegetable editVegetable(@RequestBody Vegetable vegetable)  throws ServiceException {
         IService service = ServiceFactory.getInstance().getService(ServiceName.VEGETABLE);
-        service.updateVegetable(vegetable);
+        return service.updateVegetable(vegetable);
     }
 
     @RequestMapping(value = "/salad/edit", method = RequestMethod.POST,

@@ -4,6 +4,7 @@ requirejs.config({
         'bootstrap': "lib/bootstrap",
         'app': "app",
         'details': "modules/details",
+        'edit': 'modules/edit',
         'ajax': 'modules/ajax'
     }
 });

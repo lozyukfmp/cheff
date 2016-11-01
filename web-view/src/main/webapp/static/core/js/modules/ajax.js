@@ -1,4 +1,4 @@
-define(['jquery', 'details'], function ($, details) {
+define(['jquery', 'details', 'edit'], function ($, details, edit) {
 
     function getItemList(itemType) {
         $.ajax({
@@ -13,7 +13,6 @@ define(['jquery', 'details'], function ($, details) {
         $.ajax({
             url: itemType + "/show/" + item.id,
             success: function (response) {
-                console.log("SHOW RESULT : " + response)
                 details.showDetails(itemType, response);
             }
         });
@@ -31,6 +30,7 @@ define(['jquery', 'details'], function ($, details) {
                 xhr.setRequestHeader("Content-Type", "application/json");
             },
             success: function (response) {
+                edit.closeModal();
                 details.showDetails(itemType, response);
             }
         });

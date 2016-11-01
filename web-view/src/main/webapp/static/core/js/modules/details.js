@@ -1,4 +1,4 @@
-define(['require', 'jquery', 'ajax'], function(require, $, ajax) {
+define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
 
     var itemContainer = $("div.col-md-5:first > div.list-group");
     var detailsContainer = $("div.col-md-5:last");
@@ -35,7 +35,7 @@ define(['require', 'jquery', 'ajax'], function(require, $, ajax) {
             .append($("<p></p>").text("Proteins : " + vegetable.proteins))
             .append($("<p></p>").text("Carbohydrates : " + vegetable.carbohydrates));
 
-        addEditButtons();
+        addEditButtons("vegetable", vegetable);
     }
 
     function showSaladDetails(salad) {
@@ -68,18 +68,19 @@ define(['require', 'jquery', 'ajax'], function(require, $, ajax) {
         addEditButtons();
     }
 
-    function addEditButtons() {
-        detailsContainer.append("<div class='btn-group'>" +
-        "<button type='button' class='btn btn-primary'>Edit</button>" +
-            "<button type='button' class='btn btn-danger'>Delete</button>" +
-            "</div>");
+    function addEditButtons(itemType, item) {
+        var $buttonContainer = $("<div class='btn-group'></div>");
 
         var $editButton = $("<button class='btn btn-primary'></button>").text("Edit");
         var $deleteButton = $("<button class='btn btn-danger'></button>").text("Delete");
 
         $editButton.click(function () {
-
+            edit.fillForm(itemType, item);
+            edit.showModal();
         });
+
+        $buttonContainer.append($editButton, $deleteButton);
+        detailsContainer.append($buttonContainer);
     }
 
     return {

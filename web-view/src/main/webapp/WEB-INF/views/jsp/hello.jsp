@@ -27,7 +27,6 @@
     <![endif]-->
     <spring:url value="/static/js/config" var="applicationJs"/>
     <spring:url value="/static/js/lib/require.js" var="requireJs"/>
-    <script data-main="${applicationJs}" src="${requireJs}"></script>
 </head>
 <body>
 <div class="container" style="margin-top: 100px;">
@@ -63,5 +62,6 @@
         </div>
     </div>
 </div>
+<script data-main="${applicationJs}" src="${requireJs}"></script>
 </body>
 </html>

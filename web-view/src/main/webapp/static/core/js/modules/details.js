@@ -11,17 +11,14 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
 
     var emptyObjects = {
         "menu": {
-            id: -1,
             name: "",
             saladList: []
         },
         "salad": {
-            id: -1,
             name: "",
             ingredients: []
         },
         "vegetable": {
-            id: -1,
             name: "",
             calories: undefined,
             fats: undefined,
@@ -33,7 +30,7 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
     function showItemList(itemType, itemList) {
         itemContainer.empty();
         detailsContainer.empty();
-        
+
         $.each(itemList, function (index, item) {
 
             var menuItemLink = $("<a href='#' class='list-group-item'></a>")
@@ -51,12 +48,17 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
 
     function showVegetableDetails(vegetable) {
         detailsContainer.empty();
-        detailsContainer
-            .append($("<p></p>").text("Name : " + vegetable.name))
-            .append($("<p></p>").text("Calories : " + vegetable.calories))
-            .append($("<p></p>").text("Fats : " + vegetable.fats))
-            .append($("<p></p>").text("Proteins : " + vegetable.proteins))
-            .append($("<p></p>").text("Carbohydrates : " + vegetable.carbohydrates));
+
+        detailsContainer.append(
+            "<table class='table table-hover'>" +
+                "<tbody>" +
+                    "<tr><td><b>Name: </b></td><td>" + vegetable.name + "</td></tr>" +
+                    "<tr><td><b>Calories: </b></td><td>" + vegetable.calories + "</td></tr>" +
+                    "<tr><td><b>Fats: </b></td><td>" + vegetable.fats + "</td></tr>" +
+                    "<tr><td><b>Proteins: </b></td><td>" + vegetable.proteins + "</td></tr>" +
+                    "<tr><td><b>Carbohydrates: </b></td><td>" + vegetable.carbohydrates + "</td></tr>" +
+                "</tbody>" +
+            "</table>");
 
         addEditButtons("vegetable", vegetable);
     }
@@ -64,14 +66,16 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
     function showSaladDetails(salad) {
         detailsContainer.empty();
         detailsContainer
-            .append($("<p></p>").text("Name : " + salad.name));
+            .append($("<p><b>Name: </b>" + salad.name + "</p>"));
         detailsContainer
-            .append($("<p></p>").text("Ingredients : "));
+            .append($("<p><b></b></p>").text("Ingredients : "));
 
+        var $list = $("<div class='list-group'></div>");
         $.each(salad.ingredients, function(index, vegetable){
-            detailsContainer
-                .append($("<p></p>").text("Name : " + vegetable.name));
+            $list.append($("<a href='#' class='list-group-item'></a>").text(vegetable.name));
         });
+
+        detailsContainer.append($list);
 
         addEditButtons("salad", salad);
     }
@@ -83,10 +87,12 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
         detailsContainer
             .append($("<p></p>").text("Salads : "));
 
+        var $list = $("<div class='list-group'></div>");
         $.each(menu.saladList, function(index, salad){
-            detailsContainer
-                .append($("<p></p>").text("Name : " + salad.name));
+            $list.append($("<a href='#' class='list-group-item'></a>").text(salad.name));
         });
+
+        detailsContainer.append($list);
 
         addEditButtons("menu", menu);
     }
@@ -113,7 +119,7 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
     function addCreateButton(itemType, item) {
         var $buttonContainer = $("<div class='btn-group'></div>");
 
-        var $createButton = $("<button class='btn btn-info'></button>").text("Create");
+        var $createButton = $("<button class='btn btn-info' style='margin-top: 10px;'></button>").text("Create");
 
         $createButton.click(function () {
             edit.fillForm(itemType, item, "create");

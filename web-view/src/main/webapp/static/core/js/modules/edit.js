@@ -102,7 +102,8 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
             $addedSaladList.children().each(function () {
                 salads.push({
                     id: $(this).data("id"),
-                    name: $(this).text()
+                    name: $(this).text(),
+                    ingredients: []
                 });
             });
            
@@ -137,7 +138,7 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
         var addedVegetablesNames = [];
 
         var $addedVegetableList = $("<ul class='list-group'></ul>");
-        $.each(salad.saladList, function(index, vegetable) {
+        $.each(salad.ingredients, function(index, vegetable) {
             var $link = $("<a href='#' class='list-group-item'></a>")
                 .text(vegetable.name)
                 .data("id", vegetable.id);

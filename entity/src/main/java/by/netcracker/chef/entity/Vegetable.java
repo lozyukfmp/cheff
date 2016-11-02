@@ -1,22 +1,21 @@
 package by.netcracker.chef.entity;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "vegetable")
+@NamedQueries({
+        @NamedQuery(name="Vegetable.findAll", query = "select v from Vegetable v")
+})
 public class Vegetable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vegetable_id")
-    private Integer vegetableId;
+    private Integer id;
 
     @Column(name = "vegetable_name")
     private String name;

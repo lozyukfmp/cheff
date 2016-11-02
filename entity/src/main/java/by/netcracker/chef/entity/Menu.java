@@ -1,25 +1,26 @@
 package by.netcracker.chef.entity;
 
-
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Data
-@NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "menu")
+@NamedQueries({
+        @NamedQuery(name="Menu.findAll", query = "select m from Menu m"),
+        @NamedQuery(name = "Menu.findByIdWithSalads",
+                query = "select distinct m from Menu m left join fetch " +
+                "m.saladList where m.id = :id")
+})
 public class Menu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "menu_id")
-    private int menuId;
+    private int id;
 
     @Column(name = "menu_name")
     private String name;

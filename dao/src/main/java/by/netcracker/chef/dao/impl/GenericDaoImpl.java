@@ -11,7 +11,7 @@ import java.util.List;
 public class GenericDaoImpl<T> implements GenericDao<T> {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     private Class<T> type;
 

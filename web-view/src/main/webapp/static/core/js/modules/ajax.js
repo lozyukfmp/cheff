@@ -15,6 +15,8 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
         $.ajax({
             url: itemType + "/show/" + item.id,
             success: function (response) {
+                console.log("SHOW REQUEST RESPONSE: ");
+                console.log(response);
                 details.showDetails(itemType, response);
             }
         });

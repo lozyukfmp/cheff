@@ -14,7 +14,6 @@
     <spring:url value="/static/css/custom.css" var="customCss"/>
     <!-- Bootstrap -->
     <link href="${bootstrapCss}" rel="stylesheet">
-    <link href="${customCss}" rel="stylesheet">
     <style>
         .btn-link {
             color: black;

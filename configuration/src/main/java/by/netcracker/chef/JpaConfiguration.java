@@ -22,7 +22,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource(value = {"classpath:/db/hibernate.properties"})
 @ComponentScan({"by.netcracker.chef.dao"})
-public class HibernateConfiguration {
+public class JpaConfiguration {
 
     @Autowired
     private Environment environment;

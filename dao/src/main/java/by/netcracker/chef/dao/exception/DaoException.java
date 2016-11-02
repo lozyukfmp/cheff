@@ -5,7 +5,7 @@ public class DaoException extends Exception{
         super(message, exception);
     }
 
-    public DaoException(Exception exeption) {
-        super(exeption);
+    public DaoException(Exception exception) {
+        super(exception);
     }
 }

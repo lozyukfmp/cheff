@@ -1,5 +1,4 @@
 define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
-
     var modal = $("#editModal");
     var $container = $(".modal-body");
     var $header = $(".modal-header");
@@ -50,7 +49,7 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
 
         $header.append("<h3></h3>").text("Menu edit");
         
-        var $wrapper = $("<div class='container-fluid'></div>").append("<div class='row'></div>");
+        var $wrapper = $("<div class='container-fluid' style='margin-top: 10px;'></div>");
         var $form = $("<form role='form'></form>");
         $form.append($("<div class='form-group'></div>")
             .append($("<input type='text' id='name' class='form-control' placeholder='Name'/>").val(menu.name)));
@@ -59,13 +58,18 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
 
         var addedSaladNames = [];
 
+        var $addedContainer = $("<div class='panel panel-default'>" +
+            "<div class='panel-heading'></div>" +
+            "<div class='panel-body'></div></div>");
+
+        var $existContainer = $addedContainer.clone();
+
         var $addedSaladList = $("<ul class='list-group'></ul>");
         $.each(menu.saladList, function(index, salad) {
-            var $link = $("<a href='#' class='list-group-item'></a>")
+            $addedSaladList.append($("<a href='#' class='list-group-item'></a>")
                 .text(salad.name)
-                .data("id", salad.id);
+                .data("id", salad.id));
             
-            $addedSaladList.append($link);
             addedSaladNames.push(salad.name);
         });
 
@@ -82,15 +86,11 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
 
         $addedSaladList.on("click", "a", function () {
             $existSaladList.append($(this).clone(true));
-            console.log("RETRIEVED FROM ADDED ID: " + $(this).data("id"));
-            console.log("RETRIEVED FROM ADDED NAME: " + $(this).text());
             $(this).remove();
         });
 
         $existSaladList.on("click", "a", function () {
             $addedSaladList.append($(this).clone(true));
-            console.log("RETRIEVED FROM EXIST ID: " + $(this).data("id"));
-            console.log("RETRIEVED FROM EXIST NAME: " + $(this).text());
             $(this).remove();
         });
     
@@ -115,10 +115,15 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
         });
 
         $form.append($submit);
-
         $container.append($form);
-        $wrapper.append($div.clone().append($("<label></label>").text("Salad list :"),$addedSaladList))
-            .append($div.clone().append($("<label></label>").text("All salads list :"),$existSaladList));
+        
+        $addedContainer.find(".panel-heading").append($("<b></b>").text("Added salad list:"));
+        $addedContainer.find(".panel-body").append($addedSaladList);
+
+        $existContainer.find(".panel-heading").append($("<b></b>").text("Salad list:"));
+        $existContainer.find(".panel-body").append($existSaladList);
+
+        $wrapper.append($div.clone().append($addedContainer), $div.clone().append($existContainer));
         $container.append($wrapper);
     }
 
@@ -128,7 +133,7 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
 
         $header.append("<h3></h3>").text("Salad edit");
         
-        var $wrapper = $("<div class='container-fluid'></div>").append("<div class='row'></div>");
+        var $wrapper = $("<div class='container-fluid' style='margin-top: 10px;'></div>");
         var $form = $("<form role='form'></form>");
         $form.append($("<div class='form-group'></div>")
             .append($("<input type='text' id='name' class='form-control' placeholder='Name'/>").val(salad.name)));
@@ -137,13 +142,18 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
 
         var addedVegetablesNames = [];
 
+        var $addedContainer = $("<div class='panel panel-default'>" +
+            "<div class='panel-heading'></div>" +
+            "<div class='panel-body'></div></div>");
+
+        var $existContainer = $addedContainer.clone();
+
         var $addedVegetableList = $("<ul class='list-group'></ul>");
         $.each(salad.ingredients, function(index, vegetable) {
-            var $link = $("<a href='#' class='list-group-item'></a>")
+            $addedVegetableList.append($("<a href='#' class='list-group-item'></a>")
                 .text(vegetable.name)
-                .data("id", vegetable.id);
+                .data("id", vegetable.id));
 
-            $addedVegetableList.append($link);
             addedVegetablesNames.push(vegetable.name);
         });
 
@@ -189,10 +199,15 @@ define(['require', 'jquery', 'ajax', 'bootstrap'], function (require, $, ajax) {
         });
 
         $form.append($submit);
-
         $container.append($form);
-        $wrapper.append($div.clone().append($("<label></label>").text("Ingredient list :"),$addedVegetableList))
-            .append($div.clone().append($("<label></label>").text("Vegetable list :"),$existVegetableList));
+
+        $addedContainer.find(".panel-heading").append($("<b></b>").text("Ingredient list:"));
+        $addedContainer.find(".panel-body").append($addedVegetableList);
+
+        $existContainer.find(".panel-heading").append($("<b></b>").text("Vegetable list:"));
+        $existContainer.find(".panel-body").append($existVegetableList);
+
+        $wrapper.append($div.clone().append($addedContainer), $div.clone().append($existContainer));
         
         $container.append($wrapper);
     }

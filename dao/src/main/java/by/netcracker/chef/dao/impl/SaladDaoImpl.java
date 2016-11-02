@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class SaladDaoImpl extends GenericDaoImpl<Salad> implements SaladDao {
+public class SaladDaoImpl extends GenericDaoImpl<Salad, Integer> implements SaladDao {
 
     @Override
     public Salad findWithVegetables(Integer id) {

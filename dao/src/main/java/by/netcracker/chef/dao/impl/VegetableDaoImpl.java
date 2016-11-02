@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class VegetableDaoImpl extends GenericDaoImpl<Vegetable> implements VegetableDao {
+public class VegetableDaoImpl extends GenericDaoImpl<Vegetable, Integer> implements VegetableDao {
 
     @Override
     public List<Vegetable> all() {

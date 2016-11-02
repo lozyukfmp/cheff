@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public class MenuDaoImpl extends GenericDaoImpl<Menu> implements MenuDao {
+public class MenuDaoImpl extends GenericDaoImpl<Menu, Integer> implements MenuDao {
 
     @Override
     public Menu findWithSalads(Integer id) {

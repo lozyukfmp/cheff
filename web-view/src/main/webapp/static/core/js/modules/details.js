@@ -31,6 +31,8 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
         itemContainer.empty();
         detailsContainer.empty();
 
+        var $list = $("<div class='list-group'></div>");
+        
         $.each(itemList, function (index, item) {
 
             var menuItemLink = $("<a href='#' class='list-group-item'></a>")
@@ -40,8 +42,10 @@ define(['require', 'jquery', 'ajax', 'edit'], function(require, $, ajax, edit) {
                 require('ajax').getItem(itemType, item);
             });
 
-            itemContainer.append(menuItemLink);
+            $list.append(menuItemLink);
         });
+
+        itemContainer.append($list);
 
         addCreateButton(itemType, emptyObjects[itemType]);
     }

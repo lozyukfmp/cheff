@@ -4,11 +4,12 @@ import by.netcracker.chef.dao.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class GenericDaoImpl<T> implements GenericDao<T> {
+public class GenericDaoImpl<T, PK extends Serializable> implements GenericDao<T, PK> {
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -28,12 +29,12 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
     }
 
     @Override
-    public void delete(Object id) {
+    public void delete(PK id) {
         entityManager.remove(entityManager.getReference(type, id));
     }
 
     @Override
-    public T find(Object id) {
+    public T find(PK id) {
         return (T) entityManager.find(type, id);
     }
 

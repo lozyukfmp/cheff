@@ -9,8 +9,6 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
             url: itemType + "/all",
             success: function(response) {
                 callback(response);
-                console.log("ITEM LIST RESPONSE: ");
-                console.log(response);
             }
         });
     }
@@ -19,10 +17,7 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
         $.ajax({
             url: itemType + "/show/" + item.id,
             success: function (response) {
-                console.log("ITEM RESPONSE: ");
-                console.log(response);
                 details.showDetails(itemType, response);
-                edit.closeModal();
             }
         });
     }
@@ -51,6 +46,7 @@ define(['jquery', 'details', 'edit'], function ($, details, edit) {
                 xhr.setRequestHeader("Content-Type", "application/json");
             },
             success: function (response) {
+                edit.closeModal();
                 getItemList(itemType);
                 getItem(itemType, response);
             }
